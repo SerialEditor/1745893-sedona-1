@@ -31,8 +31,7 @@ body {
   border: 0;
   padding: 0;
   white-space: nowrap;
-  -webkit-clip-path: inset(100%);
-          clip-path: inset(100%);
+  clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
@@ -90,7 +89,7 @@ button.button:disabled {
 .page-container {
   display: flex;
   flex-direction: column;
-  width: 1200px;
+  max-width: 1200px;
   min-height: 100vh;
   margin: 0 auto;
   background-color: #ffffff;
@@ -98,17 +97,18 @@ button.button:disabled {
 }
 
 .page-header {
-  padding: 0 70px;
+  padding: 0 clamp(20px, calc(5vw + 2px), 70px);
 }
 
 .navigation {
   display: flex;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .page-header-logo {
   position: relative;
-  width: 140px;
+  width: min(25cqw, 140px);
   height: 64px;
   margin-right: 28px;
 }
@@ -120,6 +120,7 @@ button.button:disabled {
 
 .page-header-logo img {
   position: absolute;
+  z-index: 1;
   max-width: 100%;
   height: auto;
 }
@@ -141,9 +142,14 @@ button.button:disabled {
   margin-left: auto;
 }
 
+.site-navigation-link,
+.user-navigation-link {
+  display: block;
+  text-decoration: none;
+}
+
 .site-navigation-link {
   position: relative;
-  display: block;
   padding: 20px 16px;
   font-size: 20px;
   line-height: 24px;
@@ -151,7 +157,6 @@ button.button:disabled {
   text-align: center;
   color: #000000;
   background-color: #ffffff;
-  text-decoration: none;
 }
 
 .site-navigation-link[href]:hover {
@@ -179,38 +184,29 @@ button.button:disabled {
   background-color: #756257;
 }
 
-.user-navigation-link {
-  display: block;
-  text-decoration: none;
-}
-
-.user-navigation-link-search {
+.icon-user-link {
   width: 44px;
   height: 64px;
   background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.user-link-search {
   background-image: url("../images/icons/search.svg");
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
-.user-navigation-link-favorite {
+.user-link-favorites {
   position: relative;
-  width: 44px;
-  height: 64px;
-  background-color: #ffffff;
   background-image: url("../images/icons/heart.svg");
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
-.user-navigation-link-search:focus-visible,
-.user-navigation-link-favorite:focus-visible {
+.icon-user-link:focus-visible {
   background-color: rgba(131, 179, 211, 0.2);
   outline: none;
 }
 
-.user-navigation-link-search:active,
-.user-navigation-link-favorite:active {
+.icon-user-link:active {
   background-color: #ffffff;
   opacity: 0.3;
 }
@@ -245,7 +241,7 @@ button.button:disabled {
 }
 
 .hero {
-  padding: 0 70px;
+  padding: 0 clamp(20px, calc(5vw + 2px), 70px);
   padding-top: 51px;
   padding-bottom: 82px;
   background-color: #298b4a;
@@ -257,19 +253,23 @@ button.button:disabled {
 
 .hero-text-invitation {
   display: block;
+  max-width: 100%;
+  height: auto;
   margin: 0 auto;
 }
 
 .advantages {
+  container-type: inline-size;
+  container-name: advantages;
   padding-top: 69px;
   text-align: center;
 }
 
 .advantages-slogan-content {
-  width: 652px;
+  max-width: 652px;
   margin: 0 auto;
   margin-bottom: 90px;
-  padding: 0 70px;
+  padding: 0 clamp(20px, calc(5vw + 2px), 70px);
 }
 
 .services-slogan-content {
@@ -309,7 +309,6 @@ button.button:disabled {
 
 .advantages-item {
   display: grid;
-  align-items: center;
   min-height: 385px;
   background-color: rgba(131, 179, 211, 0.12);
   text-align: center;
@@ -324,7 +323,7 @@ button.button:disabled {
 }
 
 .advantages-item.advantages-item-illustrated {
-  grid-column: 1 / 4;
+  grid-column: 1 / -1;
   grid-template-columns: repeat(3, 1fr);
   color: #ffffff;
   background-color: #82b3d3;
@@ -335,7 +334,7 @@ button.button:disabled {
   flex-direction: column;
   align-items: center;
   row-gap: 30px;
-  padding: 112px 85px;
+  padding: 112px 35px;
 }
 
 .advantages-item-illustrated .advantages-text-wrapper {
@@ -385,8 +384,12 @@ button.button:disabled {
 }
 
 .advantages-image-wrapper {
-  grid-column: span 2;
+  grid-column: 2 / -1;
   align-self: stretch;
+}
+
+.flow-reverse .advantages-image-wrapper {
+  grid-column: 1 / -2;
 }
 
 .advantages-image {
@@ -398,6 +401,7 @@ button.button:disabled {
 
 .advantages-title {
   order: -1;
+  width: 230px;
   margin: 0;
   font-size: 24px;
   line-height: 28px;
@@ -414,9 +418,20 @@ button.button:disabled {
 }
 
 .advantages-description {
+  width: 230px;
   margin: 0;
   font-size: 18px;
   line-height: 21px;
+}
+
+@container advantages (width < 900px) {
+  .advantages-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .advantages-item-illustrated {
+    grid-template-columns: auto 1fr;
+  }
 }
 
 .search {
@@ -425,9 +440,9 @@ button.button:disabled {
 }
 
 .search-content-wrapper {
-  width: 592px;
+  max-width: 592px;
   margin: 0 auto;
-  padding: 0 70px;
+  padding: 0 clamp(20px, calc(5vw + 2px), 70px);
 }
 
 .search-title {
@@ -458,9 +473,9 @@ button.button:disabled {
 }
 
 .newsletter-content-wrapper {
-  width: 684px;
+  max-width: 684px;
   margin: 0 auto;
-  padding: 0 70px;
+  padding: 0 clamp(20px, calc(5vw + 2px), 70px);
 }
 
 .newsletter-index {
@@ -1534,16 +1549,17 @@ button.button:disabled {
 
 .page-footer {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
-  padding: 40px 70px;
+  row-gap: 35px;
+  padding: 40px clamp(20px, calc(5vw + 2px), 70px);
   padding-bottom: 30px;
 }
 
 .footer-social-list {
   display: flex;
   flex-wrap: wrap;
-  width: 240px;
+  max-width: 240px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -1575,8 +1591,15 @@ button.button:disabled {
   fill-opacity: 0.3;
 }
 
+.footer-phone-container {
+  display: flex;
+  flex-grow: 1;
+  margin: 0;
+}
+
 .footer-phone {
   max-width: 340px;
+  margin: 0 auto;
   font-size: 40px;
   line-height: 50px;
   text-align: center;
@@ -1598,16 +1621,9 @@ button.button:disabled {
   color: rgba(117, 97, 87, 0.3);
 }
 
-.htmlacademy-logo-container {
-  width: 211px;
-  margin: 0;
-}
-
 .htmlacademy-logo {
-  display: block;
   width: 115px;
   height: 34px;
-  margin-left: auto;
 }
 
 .htmlacademy-logo:focus-visible {
@@ -1621,4 +1637,16 @@ button.button:disabled {
 
 .htmlacademy-logo:active path {
   fill-opacity: 0.3;
+}
+
+@media screen and (width <= 960px) {
+  .page-footer {
+    justify-content: space-around;
+    column-gap: 140px;
+  }
+
+  .footer-phone-container {
+    order: 1;
+    width: 100%;
+  }
 }
