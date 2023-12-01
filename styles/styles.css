@@ -160,11 +160,11 @@ button.button:disabled {
 }
 
 .site-navigation-link[href]:hover {
-  color:#756157;
+  color: #756157;
 }
 
 .site-navigation-link:focus-visible {
-  color:#756157;
+  color: #756157;
   background-color: rgba(131, 179, 211, 0.2);
   outline: none;
 }
@@ -241,11 +241,12 @@ button.button:disabled {
 }
 
 .hero {
-  padding: 0 clamp(20px, calc(5vw + 2px), 70px);
+  padding: 0 clamp(35px, calc(5vw + 2px), 70px);
   padding-top: 51px;
   padding-bottom: 82px;
   background-color: #298b4a;
-  background-image: url("../images/covering-bg/hero-decoration-border.svg"), url("../images/covering-bg/hero-bg.jpg");
+  background-image: url("../images/covering-bg/hero-decoration-border.svg"),
+    url("../images/covering-bg/hero-bg.jpg");
   background-position: bottom, center;
   background-size: 100% auto, cover;
   background-repeat: no-repeat;
@@ -347,7 +348,7 @@ button.button:disabled {
   content: "";
   width: 60px;
   height: 2px;
-  background-color: rgba(0, 0, 0, 0.30);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .advantages-item-illustrated .advantages-text-wrapper::before {
@@ -486,7 +487,7 @@ button.button:disabled {
 
 .newsletter-form {
   display: grid;
-  grid-template-columns: 1fr min-content;
+  grid-template-columns: 1fr auto;
 }
 
 .newsletter input {
@@ -530,6 +531,7 @@ button.button:disabled {
 }
 
 .newsletter .button-submit {
+  max-width: 55cqi;
   font-size: 20px;
   line-height: 36px;
   border-top-left-radius: 0;
@@ -540,6 +542,10 @@ button.button:disabled {
   .newsletter-form {
     grid-template-columns: 1fr;
     row-gap: 20px;
+  }
+
+  .newsletter .button-submit {
+    max-width: none;
   }
 
   .newsletter input,
@@ -721,14 +727,14 @@ button.button:disabled {
   text-align: center;
   outline-offset: -2px;
   -webkit-appearance: textfield;
-          appearance: textfield;
+  appearance: textfield;
 }
 
 .number-entering-input::-webkit-outer-spin-button,
 .number-entering-input::-webkit-inner-spin-button {
   margin: 0;
   -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
 }
 
 .number-change-button {
@@ -1137,7 +1143,8 @@ button.button:disabled {
   outline: 2px solid #ff5757;
 }
 
-@supports not selector(.price-selection-label:has(.price-selection-input:invalid)) {
+@supports not
+  selector(.price-selection-label:has(.price-selection-input:invalid)) {
   .price-selection-input:invalid {
     outline: 2px solid #ff5757;
   }
@@ -1160,14 +1167,14 @@ button.button:disabled {
   border: none;
   background-color: transparent;
   -webkit-appearance: textfield;
-          appearance: textfield;
+  appearance: textfield;
 }
 
 .price-selection-input::-webkit-outer-spin-button,
 .price-selection-input::-webkit-inner-spin-button {
   margin: 0;
   -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
 }
 
 .price-selection-input:focus {
@@ -1299,7 +1306,7 @@ button.button:disabled {
   border-radius: 4px;
   cursor: pointer;
   -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
 }
 
 .sorting-control:hover {
@@ -1662,13 +1669,74 @@ button.button:disabled {
 }
 
 @media screen and (width <= 768px) {
-  [class$="title"]:not(h3) {
-    font-size: 26px;
-    line-height: 32px;
+  body {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  h2[class$="title"],
+  .slogan-title {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  h3[class$="title"] {
+    font-size: 22px;
+    line-height: 26px;
+  }
+
+  .search-link,
+  .newsletter .button-submit {
+    font-size: 18px;
+    line-height: 30px;
   }
 
   .footer-phone {
     font-size: 30px;
     line-height: 36px;
+  }
+}
+
+@media screen and (width <= 425px) {
+  body {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  h2[class$="title"],
+  .slogan-title {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  h3[class$="title"] {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .site-navigation-link {
+    padding: 16px;
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .advantages-description {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .search-link,
+  .newsletter .button-submit {
+    font-size: 16px;
+    line-height: 30px;
+  }
+
+  .search-link {
+    padding: 8px 16px;
+  }
+
+  .footer-phone {
+    font-size: 24px;
+    line-height: 30px;
   }
 }
