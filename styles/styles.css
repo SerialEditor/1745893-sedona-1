@@ -1688,6 +1688,11 @@ button.button:disabled {
     line-height: 22px;
   }
 
+  h1[class$="title"] {
+    font-size: 48px;
+    line-height: 50px;
+  }
+
   h2[class$="title"],
   .slogan-title {
     font-size: 24px;
@@ -1723,7 +1728,8 @@ button.button:disabled {
     line-height: 26px;
   }
 
-  h3[class$="title"] {
+  h3[class$="title"],
+  h3[class$="name"] {
     font-size: 18px;
     line-height: 22px;
   }
@@ -1747,6 +1753,17 @@ button.button:disabled {
 
   .search-link {
     padding: 8px 16px;
+  }
+
+  .hotel {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .hotel .button,
+  .rating-assessment {
+    font-size: 12px;
+    line-height: 18px;
   }
 
   .footer-phone {
