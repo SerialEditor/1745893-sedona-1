@@ -993,15 +993,19 @@ button.button:disabled {
 
 .catalog-filter-form {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 50px 20px;
   font-size: 18px;
   line-height: 23px;
 }
 
 .filter-column {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 50px 20px;
 }
 
 .filter-column-left {
