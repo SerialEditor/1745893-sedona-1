@@ -1104,7 +1104,7 @@ button.button:disabled {
 }
 
 .price-selection-group {
-  width: 288px;
+  width: min(100%, 288px);
 }
 
 .price-selection-fields {
