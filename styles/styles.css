@@ -1280,6 +1280,8 @@ button.button:disabled {
 
 .catalog-inner-container {
   display: flex;
+  flex-wrap: wrap;
+  row-gap: 20px;
   align-items: center;
   margin-bottom: 40px;
 }
@@ -1297,7 +1299,7 @@ button.button:disabled {
 
 .sorting-control {
   box-sizing: border-box;
-  width: 292px;
+  width: min(100%, 292px);
   padding: 12px 18px;
   padding-right: 40px;
   font-family: inherit;
