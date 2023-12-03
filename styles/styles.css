@@ -94,10 +94,11 @@ button.button:disabled {
   margin: 0 auto;
   background-color: #ffffff;
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
+  --inline-padding: 70px;
 }
 
 .page-header {
-  padding: 0 clamp(20px, calc(5vw + 2px), 70px);
+  padding: 0 var(--inline-padding);
 }
 
 .navigation {
@@ -268,7 +269,7 @@ button.button:disabled {
   max-width: 652px;
   margin: 0 auto;
   margin-bottom: 90px;
-  padding: 0 clamp(20px, calc(5vw + 2px), 70px);
+  padding: 0 var(--inline-padding);
 }
 
 .services-slogan-content {
@@ -421,7 +422,7 @@ button.button:disabled {
 .search-content-wrapper {
   max-width: 592px;
   margin: 0 auto;
-  padding: 0 clamp(20px, calc(5vw + 2px), 70px);
+  padding: 0 var(--inline-padding);
 }
 
 .search-title {
@@ -456,7 +457,7 @@ button.button:disabled {
   container-name: newsletter;
   max-width: 684px;
   margin: 0 auto;
-  padding: 0 clamp(20px, calc(5vw + 2px), 70px);
+  padding: 0 var(--inline-padding);
 }
 
 .newsletter-index {
@@ -901,7 +902,7 @@ button.button:disabled {
 }
 
 .catalog-main-top-container {
-  padding: 70px;
+  padding: 70px var(--inline-padding);
   padding-top: 35px;
   color: #ffffff;
   background-color: #298b4a;
@@ -1273,7 +1274,8 @@ button.button:disabled {
 }
 
 .catalog {
-  padding: 50px 70px 60px;
+  padding: 50px var(--inline-padding);
+  padding-bottom: 60px;
 }
 
 .catalog-inner-container {
@@ -1555,7 +1557,7 @@ button.button:disabled {
   flex-wrap: wrap;
   align-items: center;
   row-gap: 35px;
-  padding: 40px clamp(20px, calc(5vw + 2px), 70px);
+  padding: 40px var(--inline-padding);
   padding-bottom: 30px;
 }
 
@@ -1643,6 +1645,10 @@ button.button:disabled {
 }
 
 @media screen and (width < 960px) {
+  .page-container {
+    --inline-padding: max(20px, 5vw + 4px);
+  }
+
   .page-footer {
     justify-content: space-around;
     column-gap: 140px;
